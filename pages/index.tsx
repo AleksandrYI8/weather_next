@@ -16,9 +16,9 @@ const geistMono = localFont({
 
 function getDayAndMonth() {
   const now = new Date();
-  
+
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  
+
   const month = months[now.getMonth()];
 
   return { month, dayOfMonth: now.getDate() };
@@ -37,23 +37,23 @@ export default function Home() {
         .then(response => response.json())
         .then(data => setDataa(data))
         .catch(error => console.error('Error:', error));
-    }
-  }, [country, baseUrl]);
+      }
+    }, [country, baseUrl]);
+    console.log(dataa);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setCountry(name);
   };
-
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };
-
-  const imageSrc = dataa.current && dataa.current.weather_icons && dataa.current.weather_icons.length ? dataa.current.weather_icons[0] : '/sun.svg'
-
-  console.log(dataa);
   
-    
+  const imageSrc = /* dataa.current && dataa.current.weather_icons && dataa.current.weather_icons.length ? dataa.current.weather_icons[0] : */ '/sun.svg'
+
+
+
 
   return (
     <div className="w-[25%] mx-auto mt-[20px] bg-blue-400 rounded p-[2%]">
@@ -72,7 +72,7 @@ export default function Home() {
 
       <Image
         className="mx-auto mb-[20%]"
-        src={imageSrc} 
+        src={imageSrc}
         alt="Weather icon"
         width={250}
         height={250}
@@ -90,25 +90,28 @@ export default function Home() {
         </h1>
 
         <div className="w-[100%] flex justify-center flex-col items-center gap-[20px]">
-        <div className="w-[50%] flex mx-auto gap-[10px]">
-          <div className="flex gap-[10px] border-r pr-[10px]">
-            <img className='w-[20px]' src="/wind.svg" alt="sun" />
-            <p>Wind</p>
+          <div className="w-[50%] flex mx-auto gap-[10px]">
+            <div className="flex gap-[10px] border-r pr-[10px]">
+              <img className='w-[20px]' src="/wind.svg" alt="sun" />
+              <p>Wind</p>
+            </div>
+            <div className="">
+              <p>
+          {dataa.current ? dataa.current.wind_speed : '...'} km/h
+              </p>
+            </div>
           </div>
-          <div className="">
-           <p>10 Km/h</p>
-          </div>
-        </div>
 
-        <div className="w-[50%] flex mx-auto gap-[10px]">
-          <div className="flex gap-[10px] border-r pr-[10px]">
-            <img className='w-[20px]' src="/hum.svg" alt="sun" />
-            <p>Hum</p>
+          <div className="w-[50%] flex mx-auto gap-[10px]">
+            <div className="flex gap-[10px] border-r pr-[10px]">
+              <img className='w-[20px]' src="/hum.svg" alt="sun" />
+              <p>Hum</p>
+            </div>
+            <div className="">
+              <p>
+          {dataa.current ? dataa.current.humidity : '...'} %</p>
+            </div>
           </div>
-          <div className="">
-           <p>54 %</p>
-          </div>
-        </div>
 
         </div>
 
