@@ -73,7 +73,7 @@ export default function Home() {
 
 
   return (
-    <div className="bg-blue-400 w-full h-[100vh] ">
+    <div className="bg-blue-400 w-full h-[100%] ">
 
       <div className="ms:w-[25%] xl:w-[65%] mx-auto rounded   ms:p-[20px] xl:p-[10px]">
         <form className="flex relative  justify-center w-[100%]  xl:mb-[5%]" onSubmit={handleSubmit}>
@@ -90,7 +90,7 @@ export default function Home() {
         </form>
 
         <Image
-          className="mx-auto ms:w-[150px] xl:w-[400px] mb-[5%] bg-none"
+          className="mx-auto ms:w-[150px] xl:w-[400px] mb-[5%] bg-none rounded-[50%]"
           src={imageSrc}
           alt="Weather icon"
           width={180}
